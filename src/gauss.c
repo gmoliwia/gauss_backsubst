@@ -16,20 +16,20 @@ int eliminate(Matrix *mat, Matrix *b){
             }
         }
 		 // Jeśli element główny jest zerem, macierz jest osobliwa
-        if (fabs(mat->data[pivot_row][i]) < 1e-12) {
+        if (fabs(mat->data[pivot_][i]) < 1e-12) {
             return 1;
         }
 		 // Zamiana wierszy, jeśli konieczne
         if (pivot_row != i) {
             for (int k = 0; k < m; k++) {
                 double temp = mat->data[i][k];
-                mat->data[i][k] = mat->data[pivot_row][k];
-                mat->data[pivot_row][k] = temp;
+                mat->data[i][k] = mat->data[pivot_r][k];
+                mat->data[pivot_r][k] = temp;
             }
             // Zamiana również wektora b
             double temp_b = b->data[i][0];
-            b->data[i][0] = b->data[pivot_row][0];
-            b->data[pivot_row][0] = temp_b;
+            b->data[i][0] = b->data[pivot_r][0];
+            b->data[pivot_r][0] = temp_b;
         }
 
         // Eliminacja wierszy poniżej bieżącego
